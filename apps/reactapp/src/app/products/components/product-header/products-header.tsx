@@ -10,9 +10,10 @@ interface Props {
 export class Productsheader extends React.Component<Props> {
 
     componentWillMount() {
-        console.log(this.props);
-        this.props.loadProducts();
+        console.log('props', this.props);
+        // this.props.loadProducts();
     }
+
     render() {
         const { selectedProducts } = this.props;
         return (<div className="products-header-container">
@@ -25,6 +26,7 @@ export class Productsheader extends React.Component<Props> {
         </div>)
     }
 }
+
 
 
 

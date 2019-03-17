@@ -9,7 +9,7 @@ export function loadProducts() {
         console.warn(data);
         setTimeout(() => {
             productsLoaded(data);
-        }, 2000);
+        }, 3000);
     }).catch((e) => {
         loadProductsError(e);
     })

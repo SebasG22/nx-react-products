@@ -1,7 +1,11 @@
 import { ProductsActionTypes } from './products.actions.enums';
 
 export interface Entity {
+    _id?: string;
+    category: string;
     name: string;
+    price: string;
+    stocked: boolean;
 }
 
 export interface ProductsState {

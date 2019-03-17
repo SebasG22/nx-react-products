@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  backendUrl: 'http://my-json-server.typicode.com/luribeto/reactjs-course-data/'
 };
 
 /*

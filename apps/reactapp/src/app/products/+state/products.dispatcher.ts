@@ -3,15 +3,22 @@ import { fetchProducts } from './products.service';
 import { Entity } from './products.reducer';
 import { store } from './products.config';
 
-export function testing(dispatch) {
-    console.log('Entro aquí');
+export function loadProducts() {
     store.dispatch(LoadProducts());
     return fetchProducts().then((data: Entity[]) => {
         console.warn(data);
         setTimeout(() => {
-            store.dispatch(ProductsLoaded(data))
+            productsLoaded(data);
         }, 2000);
     }).catch((e) => {
-        store.dispatch(LoadProductsError(e));
+        loadProductsError(e);
     })
+}
+
+export function productsLoaded(payload: Entity[]) {
+    store.dispatch(ProductsLoaded(payload))
+}
+
+export function loadProductsError(payload) {
+    store.dispatch(LoadProductsError(payload));
 }

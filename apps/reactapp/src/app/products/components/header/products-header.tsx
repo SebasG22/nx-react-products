@@ -1,11 +1,11 @@
 import * as React from 'react';
 import "./products-header.scss";
 import { connect } from 'react-redux';
-import { testing } from '../../+state/products.facade';
+import { loadProducts } from '../../+state/products.dispatcher';
 
 interface Props {
     selectedProducts: any[];
-    testing: any;
+    loadProducts: any;
 }
 export class Productsheader extends React.Component<Props, {}> {
 
@@ -14,7 +14,7 @@ export class Productsheader extends React.Component<Props, {}> {
     }
 
     componentWillMount() {
-        this.props.testing();
+        this.props.loadProducts();
     }
     render() {
         const { selectedProducts } = this.props;
@@ -35,8 +35,8 @@ const mapStateToProps = state => ({
     selectedProducts: state.productReducer.list
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    testing
+const mapDispatchToProps = () => ({
+    loadProducts
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Productsheader);

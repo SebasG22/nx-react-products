@@ -1,5 +1,5 @@
 import { LoadProducts, ProductsLoaded, LoadProductsError } from './products.actions.enums';
-import { fetchProducts } from './products.service';
+import { fetchProducts } from '../services/products.service';
 import { Entity } from './products.reducer';
 import { store } from './products.config';
 

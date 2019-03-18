@@ -12,7 +12,6 @@ interface Props {
 class ProductsList extends React.Component<Props> {
 
     componentWillMount() {
-        console.log(this.props);
         loadProducts();
     }
 
@@ -20,7 +19,7 @@ class ProductsList extends React.Component<Props> {
         const { selectedProducts } = this.props;
 
         return (
-            <ProductsCategory products={getProductsCategories(selectedProducts)} modalIsOpened={false}></ProductsCategory>
+            <ProductsCategory products={getProductsCategories(selectedProducts)}></ProductsCategory>
         )
     }
 }

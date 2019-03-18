@@ -23,7 +23,6 @@ export const initialState: ProductsState = {
 export function productReducer(
     state: ProductsState = initialState,
     action): ProductsState {
-    console.log('Entre aquí');
     switch (action.type) {
         case ProductsActionTypes.LoadProducts: {
             state = { ...state, loaded: false }

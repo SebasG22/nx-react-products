@@ -25,14 +25,10 @@ export default class ProductsCategory extends React.Component<Props, State> {
     }
 
     setModalIsOpended(value: boolean) {
-        console.log('Change to', value);
         this.setState({ ...this.state, modalIsOpened: value })
-        console.log('Changed', this.state);
-
     }
 
     get modalIsOpened() {
-        console.log(this.props);
         return this.state.modalIsOpened;
     }
 
@@ -42,13 +38,11 @@ export default class ProductsCategory extends React.Component<Props, State> {
 
 
     setProductInformation(productInformation: Entity) {
-        console.log({ productInformation });
         this.setState({ ...this.state, productInformation });
         this.openModalForm();
     }
 
     closeModalForm = (dataFromChild) => {
-        console.log(dataFromChild);
         this.setModalIsOpended(false);
     }
 

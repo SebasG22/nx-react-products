@@ -16,13 +16,11 @@ class ProductsList extends React.Component<Props> {
         loadProducts();
     }
 
-
-
     render() {
         const { selectedProducts } = this.props;
 
         return (
-            <ProductsCategory products={getProductsCategories(selectedProducts)}></ProductsCategory>
+            <ProductsCategory products={getProductsCategories(selectedProducts)} modalIsOpened={false}></ProductsCategory>
         )
     }
 }

@@ -3,13 +3,37 @@ import Spinner from '../../../shared/spinner/spinner';
 import * as _ from 'lodash';
 import { Entity } from '../../+state/products.reducer';
 import "./products-category.scss";
+import Productform from '../product-form/product-form';
 
 export interface Props {
     products: any[]
 }
 
-export default class ProductsCategory extends React.Component<Props> {
+export interface State {
+    modalIsOpened: boolean;
+}
 
+export default class ProductsCategory extends React.Component<Props, State> {
+
+    constructor(props){
+        super(props);
+    }
+
+    componentDidMount(){
+        this.setModalIsOpended(false);
+    }
+    
+    setModalIsOpended(value: boolean){
+        console.log('Change to', value);
+        this.setState({modalIsOpened: value})
+        console.log('Changed', this.state);
+
+    }
+
+    get modalIsOpened(){
+        console.log(this.props);
+        return this.state.modalIsOpened;
+    }
 
     buildCategoryTitle(products: Entity[]) {
         return Object.keys(products).map((key) => {
@@ -37,7 +61,21 @@ export default class ProductsCategory extends React.Component<Props> {
             </div>
             </React.Fragment>
         })
+
+        
     }
+
+    myCallback = (dataFromChild) => {
+        console.log(dataFromChild);
+        this.setModalIsOpended(false);
+    }
+
+    openModalForm = (e) => {
+        e.preventDefault();
+        console.log('Click Detected', this.props);
+        this.setModalIsOpended(true);
+    }
+
     render() {
         const products = this.props.products;
         const categories = Object.keys(products);
@@ -49,6 +87,8 @@ export default class ProductsCategory extends React.Component<Props> {
                 {!_.isEmpty(products) ? (
                     <React.Fragment>
                         {a}
+                        <button onClick={this.openModalForm}> Add Product</button>
+                        <Productform opened={this.modalIsOpened} callbackFromParent={this.myCallback}></Productform>
                     </React.Fragment>
                 ) : (<Spinner></Spinner>
                     )

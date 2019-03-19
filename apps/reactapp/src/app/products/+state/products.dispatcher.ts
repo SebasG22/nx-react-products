@@ -10,10 +10,9 @@ import { store } from './products.config';
 export function loadProducts() {
     store.dispatch(LoadProducts());
     return fetchProducts().then((data: Entity[]) => {
-        console.warn(data);
         setTimeout(() => {
             productsLoaded(data);
-        }, 3000);
+        }, 2000);
     }).catch((e) => {
         loadProductsError(e);
     })

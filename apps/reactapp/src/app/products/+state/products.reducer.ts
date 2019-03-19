@@ -38,17 +38,12 @@ export function productReducer(
             state = { ...state, loaded: true, error: action.payload }
             break;
         }
-        case ProductsActionTypes.CreateProduct: {
-            const list = [...state.list];
-            list.push(action.payload);
-            state = { ...state, list };
+        case ProductsActionTypes.ProductCreated: {
+            state = { ...state, list: action.payload };
             break;
         }
-        case ProductsActionTypes.UpdateProduct: {
-            const list = [...state.list];
-            const a = _.findIndex(list, { _id: action.payload._id });
-            list[a] = action.payload
-            state = { ...state, list }
+        case ProductsActionTypes.ProductUpdated: {
+            state = { ...state, list: action.payload }
             break;
         }
 

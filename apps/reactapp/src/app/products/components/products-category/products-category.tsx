@@ -102,7 +102,7 @@ class ProductsCategory extends React.Component<Props, State> {
                     <React.Fragment>
                         {this.buildCategoryTitle(products)}
                         <div className="products-category-button-wrapper">
-                        <button className="button " onClick={() => { this.setProductInformation(null) }}>Add Product</button>
+                        <button className="button button--material--flat" onClick={() => { this.setProductInformation(null) }}>Add Product</button>
                         </div>
                         <Productform opened={this.modalIsOpened} onClosed={this.closeModalForm} productInformation={this.productInformation}></Productform>
                     </React.Fragment>

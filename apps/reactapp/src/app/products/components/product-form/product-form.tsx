@@ -78,8 +78,8 @@ export default class Productform extends React.Component<Props, Entity> {
                                             </select>
                                         </div>
                                         <div className="product-form-buttons">
-                                        <button className="button product-form-buttons--cancel" type="button" onClick={this.closeForm}>Cancel</button>
-                                        <button className="button product-form-buttons--add" type="submit">Add</button>
+                                        <button className="button button--material--flat product-form-buttons--cancel" type="button" onClick={this.closeForm}>Cancel</button>
+                                        <button className="button button--material--flat product-form-buttons--add" type="submit">Add</button>
                                         </div>
                                     </form>
                                 </span>

@@ -1,5 +1,8 @@
 import { Entity } from './products.reducer';
 
+/**
+ * There are some actions that aren't using yet, these are intended to connect it with a backend.
+ */
 export enum ProductsActionTypes {
     LoadProducts = '[Products] Load Products',
     ProductsLoaded = '[Products] Products Loaded',
@@ -31,8 +34,9 @@ export const CreateProduct = (payload: Entity) => ({
     payload
 });
 
-export const ProductCreated = () => ({
-    type: ProductsActionTypes.ProductCreated
+export const ProductCreated = ( payload: Entity[]) => ({
+    type: ProductsActionTypes.ProductCreated,
+    payload
 });
 
 export const CreateProductError = (payload: string) => ({
@@ -45,8 +49,9 @@ export const UpdateProduct = (payload: Entity) => ({
     payload
 });
 
-export const ProductUpdateed = () => ({
-    type: ProductsActionTypes.ProductUpdated
+export const ProductUpdated = (payload: Entity[]) => ({
+    type: ProductsActionTypes.ProductUpdated,
+    payload
 });
 
 export const UpdateProductError = (payload: string) => ({

@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 const uuidv4 = require('uuid/v4');
 
-import { LoadProducts, ProductsLoaded, LoadProductsError, CreateProduct, ProductCreated, CreateProductError, UpdateProduct } from './products.actions.enums';
+import { LoadProducts, ProductsLoaded, LoadProductsError, CreateProduct, ProductCreated, CreateProductError, UpdateProduct, ProductUpdated } from './products.actions.enums';
 import { Entity } from './products.reducer';
 import { fetchProducts } from '../services/products.service';
 import { store } from './products.config';
@@ -27,15 +27,24 @@ export function loadProductsError(payload: string) {
 }
 
 export function CreateOrUpdateProduct(product: Entity) {
+    const list: Entity[] = [..._.get(store.getState(),'productReducer.list')];
     if (_.get(product, '_id', '') !== '') {
-        return store.dispatch(UpdateProduct(product));
+        console.log(store.getState());
+        const a = _.findIndex(list, { _id: product._id });
+        list[a] = product;
+        return productUpdated(list);
     }
     product._id = uuidv4();
-    return store.dispatch(CreateProduct(product));
+    list.push(product);
+    return store.dispatch(ProductCreated(list));
 }
 
-export function productCreated() {
-    store.dispatch(ProductCreated());
+export function productCreated(payload: Entity[]) {
+    store.dispatch(ProductCreated(payload));
+}
+
+export function productUpdated(payload: Entity[]){
+    store.dispatch(ProductUpdated(payload));
 }
 
 export function createProductError(payload: string) {

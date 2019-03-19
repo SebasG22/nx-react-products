@@ -7,7 +7,6 @@ import ProductsCategory from '../products-category/products-category';
 
 interface Props {
     selectedProducts: any[];
-    loadProducts: any;
 }
 class ProductsList extends React.Component<Props> {
 
@@ -30,8 +29,5 @@ const mapStateToProps = state => ({
     selectedProducts: state.productReducer.list
 })
 
-const mapDispatchToProps = () => ({
-    loadProducts
-})
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductsList);
+export default connect(mapStateToProps, null)(ProductsList);

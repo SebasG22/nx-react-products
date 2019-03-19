@@ -8,6 +8,12 @@ interface Props {
     onClosed: any;
 }
 
+export interface ModalData {
+    formSubmitted: boolean,
+    productInformation: Entity
+}
+
+
 export default class Productform extends React.Component<Props, Entity> {
 
     constructor(props) {
@@ -18,9 +24,12 @@ export default class Productform extends React.Component<Props, Entity> {
         this.setState({ ...this.state, ...a.productInformation });
     }
 
-    printLog = (e) => {
+    closeForm = (e, formSubmitted = false) => {
         e.preventDefault();
-        this.props.onClosed(false);
+        this.props.onClosed({
+            formSubmitted,
+            productInformation: this.state
+        })
     }
 
     get isOpened() {
@@ -31,13 +40,12 @@ export default class Productform extends React.Component<Props, Entity> {
         e.preventDefault();
         const obj = {};
         obj[`${field}`] = e.target.value;
-        console.warn({ ...this.state, ...obj });
         this.setState({ ...this.state, ...obj });
     }
 
-    onFormSubmit(e) {
-        console.warn(this.state);
+    onFormSubmit = (e) => {
         e.preventDefault();
+        this.closeForm(e, true)
     }
 
     render() {
@@ -48,10 +56,10 @@ export default class Productform extends React.Component<Props, Entity> {
                 {this.isOpened && (
                     <React.Fragment>
                         <div className="dialog-mask dialog-mask--material"></div>
-                        <div className="dialog dialog--material product-form-container" onClick={this.printLog}></div>
+                        <div className="dialog dialog--material product-form-container" onClick={this.closeForm}></div>
                         <div className="dialog dialog-container--material product-form-wrapper">
                             <div>
-                                <h1> Add a Product {this.state.name}</h1>
+                                <h1> Add a Product</h1>
                                 <p> Please fill the data requested in this dialog to add a product to our table,
                 including Product name, price and Category.</p>
                                 <span>
@@ -67,10 +75,10 @@ export default class Productform extends React.Component<Props, Entity> {
                                                 <option value="Sporting Goods">Sporting Goods</option>
                                             </select>
                                         </div>
+                                        <button className="button button--outline" type="button">Cancel</button>
+                                        <button className="button" type="submit">Add</button>
                                     </form>
                                 </span>
-                                <button className="button button--outline" type="button">Cancel</button>
-                                <button className="button" type="submit">Add</button>
 
                             </div>
                         </div>

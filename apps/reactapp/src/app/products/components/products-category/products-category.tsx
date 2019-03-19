@@ -3,10 +3,13 @@ import Spinner from '../../../shared/spinner/spinner';
 import * as _ from 'lodash';
 import { Entity } from '../../+state/products.reducer';
 import "./products-category.scss";
-import Productform from '../product-form/product-form';
+import Productform, { ModalData } from '../product-form/product-form';
+import { CreateOrUpdateProduct } from '../../+state/products.dispatcher';
+import { connect } from 'react-redux';
 
 export interface Props {
-    products: any[]
+    products: Entity[],
+    createProduct: any
 }
 
 export interface State {
@@ -14,7 +17,7 @@ export interface State {
     productInformation: Entity;
 }
 
-export default class ProductsCategory extends React.Component<Props, State> {
+class ProductsCategory extends React.Component<Props, State> {
 
     constructor(props) {
         super(props);
@@ -38,11 +41,21 @@ export default class ProductsCategory extends React.Component<Props, State> {
 
 
     setProductInformation(productInformation: Entity) {
-        this.setState({ ...this.state, productInformation });
-        this.openModalForm();
+        if (!_.get(productInformation, 'name')) {
+            this.setState({ ...this.state, productInformation: { _id: undefined, name: '', price: '', category: '', stocked: false } }, () => {
+                this.openModalForm();
+            })
+        } else {
+            this.setState({ ...this.state, productInformation }, () => {
+                this.openModalForm();
+            });
+        }
     }
 
-    closeModalForm = (dataFromChild) => {
+    closeModalForm = (data: ModalData) => {
+        if (data.formSubmitted) {
+            CreateOrUpdateProduct(data.productInformation);
+        }
         this.setModalIsOpended(false);
     }
 
@@ -69,11 +82,11 @@ export default class ProductsCategory extends React.Component<Props, State> {
     buildProductsByCategory(category: string, products: Entity[]) {
         return products[category].map((item) => {
             return <React.Fragment key={item._id}>
-                <div className="products-container" onClick={() => this.setProductInformation(item)}>
+                <div className="products-container" onClick={(e) => { e.preventDefault(); this.setProductInformation({ ...item }) }}>
                     <div className="products-container-item__name">{item.name}</div>
                     <div className="products-container-item__price">{item.price}</div>
                 </div>
-            </React.Fragment>
+            </React.Fragment >
         })
 
 
@@ -86,7 +99,7 @@ export default class ProductsCategory extends React.Component<Props, State> {
                 {!_.isEmpty(products) ? (
                     <React.Fragment>
                         {this.buildCategoryTitle(products)}
-                        <button onClick={() => { this.openModalForm() }}> Add Product</button>
+                        <button onClick={() => { this.setProductInformation(null) }}> Add Product</button>
                         <Productform opened={this.modalIsOpened} onClosed={this.closeModalForm} productInformation={this.productInformation}></Productform>
                     </React.Fragment>
                 ) : (<Spinner></Spinner>
@@ -97,3 +110,6 @@ export default class ProductsCategory extends React.Component<Props, State> {
         )
     }
 }
+
+
+export default ProductsCategory;

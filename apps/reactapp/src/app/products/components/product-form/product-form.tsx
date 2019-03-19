@@ -1,6 +1,8 @@
 import * as React from 'react';
-import "./product-form.scss";
+
 import { Entity } from '../../+state/products.reducer';
+
+import "./product-form.scss";
 
 interface Props {
     opened: boolean;
@@ -75,7 +77,7 @@ export default class Productform extends React.Component<Props, Entity> {
                                                 <option value="Sporting Goods">Sporting Goods</option>
                                             </select>
                                         </div>
-                                        <button className="button button--outline" type="button">Cancel</button>
+                                        <button className="button button--outline" type="button" onClick={this.closeForm}>Cancel</button>
                                         <button className="button" type="submit">Add</button>
                                     </form>
                                 </span>

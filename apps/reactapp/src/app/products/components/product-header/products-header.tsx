@@ -1,11 +1,11 @@
 import * as React from 'react';
-import "./products-header.scss";
 import { connect } from 'react-redux';
+
 import { loadProducts } from '../../+state/products.dispatcher';
 
+import "./products-header.scss";
+
 export class Productsheader extends React.Component {
-
-
 
     render() {
         return (<div className="products-header-container">

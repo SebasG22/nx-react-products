@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Component } from 'react';
 
-class Search extends Component {
+class Search extends React.Component {
 
     render() {
         return (
@@ -10,7 +9,7 @@ class Search extends Component {
                     <span className="mdc-button__label">Button</span>
                 </button>
 
-                <h1> Hola </h1>
+                <h1> Search </h1>
 
             </div>
         )

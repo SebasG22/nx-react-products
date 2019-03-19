@@ -1,8 +1,11 @@
-import { LoadProducts, ProductsLoaded, LoadProductsError, CreateProduct, ProductCreated, CreateProductError, UpdateProduct } from './products.actions.enums';
-import { fetchProducts } from '../services/products.service';
-import { Entity } from './products.reducer';
-import { store } from './products.config';
 import * as _ from 'lodash';
+const uuidv4 = require('uuid/v4');
+
+import { LoadProducts, ProductsLoaded, LoadProductsError, CreateProduct, ProductCreated, CreateProductError, UpdateProduct } from './products.actions.enums';
+import { Entity } from './products.reducer';
+import { fetchProducts } from '../services/products.service';
+import { store } from './products.config';
+
 
 export function loadProducts() {
     store.dispatch(LoadProducts());
@@ -28,6 +31,7 @@ export function CreateOrUpdateProduct(product: Entity) {
     if (_.get(product, '_id', '') !== '') {
         return store.dispatch(UpdateProduct(product));
     }
+    product._id = uuidv4();
     return store.dispatch(CreateProduct(product));
 }
 

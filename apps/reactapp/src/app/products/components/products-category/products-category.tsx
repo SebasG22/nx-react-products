@@ -1,18 +1,20 @@
 import * as React from 'react';
-import Spinner from '../../../shared/spinner/spinner';
 import * as _ from 'lodash';
-import { Entity } from '../../+state/products.reducer';
-import "./products-category.scss";
-import Productform, { ModalData } from '../product-form/product-form';
-import { CreateOrUpdateProduct } from '../../+state/products.dispatcher';
 import { connect } from 'react-redux';
 
-export interface Props {
+import { CreateOrUpdateProduct } from '../../+state/products.dispatcher';
+import { Entity } from '../../+state/products.reducer';
+import Productform, { ModalData } from '../product-form/product-form';
+import Spinner from '../../../shared/spinner/spinner';
+
+import "./products-category.scss";
+
+interface Props {
     products: Entity[],
     createProduct: any
 }
 
-export interface State {
+interface State {
     modalIsOpened: boolean;
     productInformation: Entity;
 }

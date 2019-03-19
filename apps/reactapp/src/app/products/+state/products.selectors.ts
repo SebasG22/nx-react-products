@@ -1,7 +1,8 @@
-import { store } from './products.config';
-import { Entity, ProductsState } from './products.reducer';
 import * as _ from 'lodash';
 const uuidv4 = require('uuid/v4');
+
+import { Entity, ProductsState } from './products.reducer';
+import { store } from './products.config';
 
 export const getProductsCategories = (products: Entity[]) => {
     const productsByCategory = {};

@@ -1,10 +1,11 @@
 import * as React from 'react';
-import "./product-list.scss";
 import { connect } from 'react-redux';
+
 import { loadProducts } from '../../+state/products.dispatcher';
 import { getProductsCategories } from '../../+state/products.selectors';
 import ProductsCategory from '../products-category/products-category';
 
+import "./product-list.scss";
 interface Props {
     selectedProducts: any[];
 }

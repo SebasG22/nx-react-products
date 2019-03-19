@@ -1,8 +1,9 @@
 import { createStore, combineReducers, applyMiddleware, Store } from 'redux'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
-import { productReducer } from './products.reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
+
+import { productReducer } from './products.reducer';
 
 export let store: Store<{}>;
 

@@ -1,3 +1,5 @@
+import * as _ from 'lodash';
+
 import { ProductsActionTypes } from './products.actions.enums';
 
 export interface Entity {
@@ -34,6 +36,19 @@ export function productReducer(
         }
         case ProductsActionTypes.LoadProductsError: {
             state = { ...state, loaded: true, error: action.payload }
+            break;
+        }
+        case ProductsActionTypes.CreateProduct: {
+            const list = [...state.list];
+            list.push(action.payload);
+            state = { ...state, list };
+            break;
+        }
+        case ProductsActionTypes.UpdateProduct: {
+            const list = [...state.list];
+            const a = _.findIndex(list, { _id: action.payload._id });
+            list[a] = action.payload
+            state = { ...state, list }
             break;
         }
 

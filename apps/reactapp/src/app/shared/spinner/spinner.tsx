@@ -1,4 +1,5 @@
-import * as React from 'react'
+import * as React from 'react';
+
 import "./spinner.scss";
 
 export default class Spinner extends React.Component {

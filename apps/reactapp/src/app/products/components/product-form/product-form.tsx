@@ -61,7 +61,7 @@ export default class Productform extends React.Component<Props, Entity> {
                         <div className="dialog dialog--material product-form-container" onClick={this.closeForm}></div>
                         <div className="dialog dialog-container--material product-form-wrapper">
                             <div>
-                                <h1> Add a Product</h1>
+                                <h1 className="product-form-title"> Add a Product</h1>
                                 <p> Please fill the data requested in this dialog to add a product to our table,
                 including Product name, price and Category.</p>
                                 <span>
@@ -70,15 +70,17 @@ export default class Productform extends React.Component<Props, Entity> {
                                         <br />
                                         <input className="text-input text-input--underbar product-form-wrapper-input" placeholder="Price" type="text" value={this.state.price} onChange={(e) => { this.detectChangeOnField('price', e) }} required />
                                         <br />
-                                        <div>
-                                            <label htmlFor="category"> Category </label>
-                                            <select id="category" className="select-input select-input--material" value={this.state.category} onChange={(e) => { this.detectChangeOnField('category', e) }}>
+                                        <div className="product-form-category-wrapper">
+                                            <span className="product-form-category-label"> Category </span>
+                                            <select id="category" className="select-input select-input--material" value={this.state.category } onChange={(e) => { this.detectChangeOnField('category', e) }}>
                                                 <option value="Electronics">Electronics</option>
                                                 <option value="Sporting Goods">Sporting Goods</option>
                                             </select>
                                         </div>
-                                        <button className="button button--outline" type="button" onClick={this.closeForm}>Cancel</button>
-                                        <button className="button" type="submit">Add</button>
+                                        <div className="product-form-buttons">
+                                        <button className="button product-form-buttons--cancel" type="button" onClick={this.closeForm}>Cancel</button>
+                                        <button className="button product-form-buttons--add" type="submit">Add</button>
+                                        </div>
                                     </form>
                                 </span>
 

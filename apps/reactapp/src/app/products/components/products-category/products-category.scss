@@ -6,9 +6,11 @@
 }
 
 .products-category-title-bar {
-  background-color: lightgray;
+  background-color: #dca2ff;
   h3 {
     margin: 0px;
+    padding: 10px;
+    font-size: 17px;
   }
 }
 
@@ -17,6 +19,8 @@
   flex-direction: row;
   flex-grow: 1;
   width: 100%;
+  padding: 3px 5px;
+  border-bottom: 1px solid #ccc;
 }
 
 .products-container-item__name{
@@ -28,4 +32,16 @@
     display: flex;
     width: 100%;
     justify-content: flex-end;
+}
+
+.products-category-button-wrapper{
+  margin: 20px;
+  .button{
+    background: #dca2ff;
+      color: white;
+    &:active{
+      background: #dca2ff;
+      color: white;
+    }
+  }
 }

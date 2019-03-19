@@ -11,8 +11,8 @@ export class Productsheader extends React.Component {
         return (<div className="products-header-container">
             <img className="products-header-container-logo" src="/assets/img/react-logo.svg"></img>
             <div className="products-header-container-title-container">
-                <h1 className="products-header-container-title-container-title"> Searchable</h1>
-                <h2 className="products-header-container-title-container-title"> Product Table</h2>
+                <h1 className="products-header-container-title-container-title"> Product List</h1>
+                <h2 className="products-header-container-title-container-title"> The best app ever</h2>
             </div>
         </div>)
     }

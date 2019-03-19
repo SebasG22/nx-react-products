@@ -44,7 +44,7 @@ class ProductsCategory extends React.Component<Props, State> {
 
     setProductInformation(productInformation: Entity) {
         if (!_.get(productInformation, 'name')) {
-            this.setState({ ...this.state, productInformation: { _id: undefined, name: '', price: '', category: '', stocked: false } }, () => {
+            this.setState({ ...this.state, productInformation: { _id: undefined, name: '', price: '', category: 'Electronics', stocked: false } }, () => {
                 this.openModalForm();
             })
         } else {
@@ -101,7 +101,9 @@ class ProductsCategory extends React.Component<Props, State> {
                 {!_.isEmpty(products) ? (
                     <React.Fragment>
                         {this.buildCategoryTitle(products)}
-                        <button onClick={() => { this.setProductInformation(null) }}> Add Product</button>
+                        <div className="products-category-button-wrapper">
+                        <button className="button " onClick={() => { this.setProductInformation(null) }}>Add Product</button>
+                        </div>
                         <Productform opened={this.modalIsOpened} onClosed={this.closeModalForm} productInformation={this.productInformation}></Productform>
                     </React.Fragment>
                 ) : (<Spinner></Spinner>

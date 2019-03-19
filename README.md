@@ -1,8 +1,17 @@
-# SampleApp
+# Product List
+
+## Techonologies Used:
+
+1. Nx : MonoRepo setup for modern development
+2. Language: React 16.8.3
+3. State Management: ( Props, State, Redux)
+4. CSS components: ONSEN UI [Nx](https://onsen.io/v2/api/css.html) 
+5. Styles: Scss using BEM standard
+
 
 This project was generated using [Nx](https://nx.dev).
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="100"></p>
 
 🔎 **Nx is a set of Angular CLI power-ups for modern development.**
 

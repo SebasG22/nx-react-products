@@ -1,0 +1,24 @@
+.products-header-container {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.products-header-container-logo {
+  height: 100px;
+}
+
+.products-header-container-title-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.products-header-container-title-container-title {
+  margin: 0;
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: 20px;
+}
